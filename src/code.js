@@ -23,9 +23,9 @@ class Code extends Component{
 
     componentWillMount() {
         const _this = this;
-        /*let myurl = window.location.href;*/
+        let myurl = window.location.href;
 
-       let myurl = `dhushdusd=1004&hiewdcme`;
+      /* let myurl = `dhushdusd=1004&hiewdcme`;*/
 
         console.log(myurl);
         let second_url = myurl.split("=");
@@ -276,7 +276,6 @@ class Code extends Component{
                 console.log(error.message)
             });
 
-
     };
     handleSubmit = (e) => {
         e.preventDefault();
@@ -285,7 +284,7 @@ class Code extends Component{
                 console.log('Received values of form: ','some');
             }else{
                 this.handleOk2();
-                this.handleOk();
+                /*this.handleOk();*/
             }
         });
 
@@ -299,7 +298,8 @@ class Code extends Component{
             Tower_addr:_this.state.addr,
         }).then(
             response=>{
-                console.log('response',_this.state.addr)
+                console.log('response',_this.state.addr);
+                _this.handleOk();
             }
         ).catch(error=>{
             console.log('error',error.message)

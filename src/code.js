@@ -23,9 +23,9 @@ class Code extends Component{
 
     componentWillMount() {
         const _this = this;
-        let myurl = window.location.href;
+        /*let myurl = window.location.href;*/
 
-       /*let myurl = `dhushdusd=1004&hiewdcme`;*/
+       let myurl = `dhushdusd=1004&hiewdcme`;
 
         console.log(myurl);
         let second_url = myurl.split("=");
@@ -71,14 +71,7 @@ class Code extends Component{
     render(){
         const { getFieldDecorator } = this.props.form;
         const formItemLayout = {
-            /*labelCol:{
-                xs:5,
-                sm:5
-            },
-            wrapperCol:{
-                xs:15,
-                sm:15
-            }*/
+
         };
 
         return(
@@ -185,6 +178,7 @@ class Code extends Component{
         let index=this.state.dataSource.indexOf(value);
         console.log('index',index);
         this.setState({
+            site:this.state.dataSource[index],
             addr:this.state.addrArr[index],
         },()=>{
             _this.props.form.setFieldsValue({
@@ -254,9 +248,12 @@ class Code extends Component{
             sensorID:this.state.sensorID,
             install_height:this.state.install_height,
             site:this.state.site,
+            Tower_addr:this.state.addr,
         })
             .then(response=>{
                 console.log(response);
+                console.log('site',this.state.site);
+
                 this.setState({
                     imei:'',
                     imsi:'',
@@ -287,11 +284,27 @@ class Code extends Component{
             if (err) {
                 console.log('Received values of form: ','some');
             }else{
+                this.handleOk2();
                 this.handleOk();
             }
         });
 
     }
+    handleOk2=()=>{
+        const _this=this;
+        axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql',{
+            sensorID:_this.state.sensorID,
+            install_height:_this.state.install_height,
+            site:_this.state.site,
+            Tower_addr:_this.state.addr,
+        }).then(
+            response=>{
+                console.log('response',_this.state.addr)
+            }
+        ).catch(error=>{
+            console.log('error',error.message)
+        })
+};
 
 }
 export default Form.create()(Code);

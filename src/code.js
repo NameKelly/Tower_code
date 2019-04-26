@@ -25,12 +25,13 @@ class Code extends Component{
         const _this = this;
         let myurl = window.location.href;
 
-       /*let myurl = `dhushdusd=1004`;*/
+       /*let myurl = `dhushdusd=1004&hiewdcme`;*/
 
         console.log(myurl);
         let second_url = myurl.split("=");
-        console.log(second_url);
-        let senor_id = second_url[1];
+        let sensor_url2=second_url[1];
+        let second_url3 = sensor_url2.split("&");
+        let senor_id = second_url3[0];
         console.log(senor_id);
 
         axios.post('http://tower.e-irobot.com:8886/api/get_identity', {
@@ -53,8 +54,7 @@ class Code extends Component{
                         imsi:_this.state.imsi,
                         sensorID:_this.state.sensorID,
                         install_height:_this.state.install_height,
-                        /*addr:_this.state.addr,
-                        site:_this.state.site,*/
+
                     });
                 })
 

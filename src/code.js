@@ -253,6 +253,9 @@ class Code extends Component{
             .then(response=>{
                 console.log(response);
                 console.log('site',this.state.site);
+                console.log('sensorID',this.state.sensorID);
+                console.log('Tower_addr',this.state.addr);
+                console.log('install_height',this.state.install_height);
 
                 this.setState({
                     imei:'',
@@ -283,13 +286,13 @@ class Code extends Component{
             if (err) {
                 console.log('Received values of form: ','some');
             }else{
-                this.handleOk2();
+                this.handleOk();
                 /*this.handleOk();*/
             }
         });
 
-    }
-    handleOk2=()=>{
+    };
+    /*handleOk2=()=>{
         const _this=this;
         axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql',{
             sensorID:_this.state.sensorID,
@@ -298,13 +301,17 @@ class Code extends Component{
             Tower_addr:_this.state.addr,
         }).then(
             response=>{
-                console.log('response',_this.state.addr);
-                _this.handleOk();
+
+                 console.log('site',this.state.site);
+                console.log('sensorID',this.state.sensorID);
+                console.log('Tower_addr',this.state.Tower_addr);
+                console.log('install_height',this.install_height);
+                /!*_this.handleOk();*!/
             }
         ).catch(error=>{
             console.log('error',error.message)
         })
 };
-
+*/
 }
 export default Form.create()(Code);

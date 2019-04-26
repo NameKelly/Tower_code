@@ -1,5 +1,5 @@
 import React ,{Component,Fragment} from 'react';
-import { Card,Form,Input ,Button } from 'antd';
+import { Card,Form,Input ,Button ,AutoComplete} from 'antd';
 import axios from "axios";
 import 'antd/dist/antd.css';
 
@@ -15,15 +15,17 @@ class Code extends Component{
             site:'',
             addr:'',
             install_height:'50',
+            dataSource:[],
+            addrArr:[],
         };
 
     }
 
     componentWillMount() {
         const _this = this;
-        /*let myurl = window.location.pathname;*/
+        let myurl = window.location.href;
 
-       let myurl = `dhushdusd=1004`;
+       /*let myurl = `dhushdusd=1004`;*/
 
         console.log(myurl);
         let second_url = myurl.split("=");
@@ -61,6 +63,9 @@ class Code extends Component{
                 console.log(error);
             });
 
+    };
+    componentDidMount(){
+            this.setData();
     };
 
     render(){
@@ -120,7 +125,16 @@ class Code extends Component{
                                     required: true, message: '请输入传感器站名',
                                 }]
                             })(
-                                <Input onChange={this.handleSite} />
+                                <AutoComplete
+                                    dataSource={this.state.dataSource}
+                                    onSelect={(value)=>this.onSelect(value)}
+                                    allowClear={true}
+                                    onFocus={this.setData}
+                                    style={{ marginBottom: 5 ,width:'100%'}}
+                                >
+                                <Input/>
+
+                                </AutoComplete>
                             )}
                         </Form.Item>
                         <Form.Item label='地址：' {...formItemLayout}>
@@ -141,6 +155,45 @@ class Code extends Component{
             </Fragment>
         );
     }
+    setData=()=>{
+        const _this = this;
+            axios.post('http://tower.e-irobot.com:8886/api/select_site', {
+                keyWords:'keyWords'
+            })
+                .then(function (response) {
+
+                        const res = JSON.parse(response.data);
+                        const data = res.data;
+                        let addrValue = data.map(v => v.addr);
+                        let siteValue = data.map(v => v.site);
+
+                        _this.setState({
+                            addrArr: addrValue,
+                            dataSource: siteValue,
+                        }, () => {
+                            console.log('StatedataSource', _this.state.dataSource);
+                        });
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+    };
+
+    onSelect=(value)=>{
+        const _this=this;
+        let index=this.state.dataSource.indexOf(value);
+        console.log('index',index);
+        this.setState({
+            addr:this.state.addrArr[index],
+        },()=>{
+            _this.props.form.setFieldsValue({
+                addr:_this.state.addr,
+            });
+        });
+
+
+    };
     handleHeight=(e)=>{
         const _this = this;
         _this.setState({
@@ -152,7 +205,7 @@ class Code extends Component{
             });
         });
     };
-    handleSite=(e)=>{
+    /*handleSite=(e)=>{
         const _this = this;
       _this.setState({
           site:e.target.value,
@@ -166,16 +219,16 @@ class Code extends Component{
                   let addrValue = data.map(v => v.addr);
                   let siteValue=data.map(v=>v.site);
 
-                  let head = '(.*)(';
+                  /!*let head = '(.*)(';
                   let tail = ')(.*)';
                   let body = _this.state.site.split('').join(')(.*)(');
-                  let siteAddr= new RegExp(head + body + tail, 'i');  /*用户输入的值*/
-
+                  let siteAddr= new RegExp(head + body + tail, 'i');  /!*用户输入的值*!/
                   if(_this.state.site.length>2){
                       let matchAddr= addrValue.filter(function (item) {
                           //遍历数组，返回值为true保留并复制到新数组，false则过滤掉
                           return item.match(siteAddr);
                       });
+
                       _this.setState({
                           addr:matchAddr[0],
                       },()=>{
@@ -185,19 +238,8 @@ class Code extends Component{
                               site:_this.state.site,
                           });
                       });
-                  }
+                  }*!/
 
-                  /*if(_this.state.site.length>2){
-                      let matchAdrr= addrValue.filter(function (item) {
-                          //遍历数组，返回值为true保留并复制到新数组，false则过滤掉
-                          return item.includes(_this.state.site);
-                      });
-                      console.log('match',matchAdrr);
-                      console.log('_this.state.site',_this.state.site);
-                      _this.setState({
-                          addr:matchAdrr[0],
-                      });
-                  }*/
 
               })
               .catch(function (error) {
@@ -205,19 +247,9 @@ class Code extends Component{
               });
 
       });
-    };
+    };*/
     handleOk=()=>{
-        /*axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql', {
-            sensorID:this.state.sensorID,
-            install_height:this.state.install_height,
-            site:this.state.site,
-        })
-            .then(function () {
-                console.log('handleOK');
-            })
-            .catch(function (error) {
-                console.log(error);
-            });*/
+
         axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql',{
             sensorID:this.state.sensorID,
             install_height:this.state.install_height,

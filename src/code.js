@@ -45,6 +45,15 @@ class Code extends Component{
                     imei:imeis,
                     imsi:imsis,
                     sensorID:senor_id,
+                },()=>{
+                    _this.props.form.setFieldsValue({
+                        imei:_this.state.imei,
+                        imsi:_this.state.imsi,
+                        sensorID:_this.state.sensorID,
+                        install_height:_this.state.install_height,
+                        /*addr:_this.state.addr,
+                        site:_this.state.site,*/
+                    });
                 })
 
             })
@@ -52,28 +61,19 @@ class Code extends Component{
                 console.log(error);
             });
 
-    }
+    };
 
     render(){
         const { getFieldDecorator } = this.props.form;
-        /*let { getFieldsValue } = this.props.form;
-        let values = getFieldsValue();
-        /!*console.log('values',values);
-        values.height=this.state.install_height;
-        values.site=this.state.site;
-        values.imei=this.state.imei;
-        values.imsi=this.state.imsi;
-        values.sensorID=this.state.sensorID;*!/*/
-
         const formItemLayout = {
-            labelCol:{
+            /*labelCol:{
                 xs:5,
                 sm:5
             },
             wrapperCol:{
                 xs:15,
                 sm:15
-            }
+            }*/
         };
 
         return(
@@ -87,12 +87,12 @@ class Code extends Component{
                 <Card title='传感器设置'  {...formItemLayout}>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Item label='传感器IMEI：' {...formItemLayout}>
-                            {getFieldDecorator('imei',{initialValue: this.state.imei})(
-                                <Input disabled />
+                            {getFieldDecorator('imei')(
+                                <Input disabled/>
                             )}
                         </Form.Item>
                         <Form.Item label='传感器IMSI：' {...formItemLayout}>
-                            {getFieldDecorator('imsi',{initialValue: this.state.imsi},{
+                            {getFieldDecorator('imsi',{
                                 rules: [{
                                     message: '请输入IMSI号',
                                 }],
@@ -101,36 +101,36 @@ class Code extends Component{
                             )}
                         </Form.Item>
                         <Form.Item label='sensorID：' {...formItemLayout}>
-                            {getFieldDecorator('sensorID',{initialValue: this.state.sensorID})(
+                            {getFieldDecorator('sensorID')(
                                 <Input disabled/>
                             )}
                         </Form.Item>
                         <Form.Item label='高度：' {...formItemLayout}>
-                            {getFieldDecorator('install_height',{initialValue: this.state.install_height}, {
+                            {getFieldDecorator('install_height', {
                                 rules: [{
                                     required: true, message: '请输入传感器安装高度',
                                 }],
                             })(
-                                <Input required onChange={this.handleHeight} />
+                                <Input  onChange={this.handleHeight} />
                             )}
                         </Form.Item>
-                        <Form.Item label='站名：' {...formItemLayout}>
-                            {getFieldDecorator('site', {initialValue: this.state.site}, {
+                        <Form.Item label='站点：' {...formItemLayout}>
+                            {getFieldDecorator('site', {
                                 rules: [{
                                     required: true, message: '请输入传感器站名',
                                 }]
                             })(
-                                <Input required onChange={this.handleSite} />
+                                <Input onChange={this.handleSite} />
                             )}
                         </Form.Item>
                         <Form.Item label='地址：' {...formItemLayout}>
-                            {getFieldDecorator('addr', {initialValue: this.state.addr})(
+                            {getFieldDecorator('addr')(
                                 <Input disabled />
                             )}
                         </Form.Item>
                         <Form.Item  style={{}} >
                             <div style={{width:"20%",display:"inline-block"}}/>
-                            <Button type="primary" htmlType="submit" >确定</Button>
+                            <Button type="primary" htmlType="submit">确定</Button>
                             <div style={{width:"20%",display:"inline-block"}}/>
                             <Button type="primary" >取消</Button>
                             <div style={{width:"20%",display:"inline-block"}}/>
@@ -145,6 +145,11 @@ class Code extends Component{
         const _this = this;
         _this.setState({
             install_height:e.target.value,
+        },()=>{
+            _this.props.form.setFieldsValue({
+                install_height:_this.state.install_height,
+
+            });
         });
     };
     handleSite=(e)=>{
@@ -173,6 +178,12 @@ class Code extends Component{
                       });
                       _this.setState({
                           addr:matchAddr[0],
+                      },()=>{
+                          console.log('addr',_this.state.addr);
+                          _this.props.form.setFieldsValue({
+                              addr:_this.state.addr,
+                              site:_this.state.site,
+                          });
                       });
                   }
 
@@ -196,25 +207,53 @@ class Code extends Component{
       });
     };
     handleOk=()=>{
-        axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql', {
+        /*axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql', {
             sensorID:this.state.sensorID,
             install_height:this.state.install_height,
             site:this.state.site,
         })
-            .then(function (response) {
+            .then(function () {
                 console.log('handleOK');
             })
             .catch(function (error) {
                 console.log(error);
+            });*/
+        axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql',{
+            sensorID:this.state.sensorID,
+            install_height:this.state.install_height,
+            site:this.state.site,
+        })
+            .then(response=>{
+                console.log(response);
+                this.setState({
+                    imei:'',
+                    imsi:'',
+                    sensorID:'',
+                    site:'',
+                    addr:'',
+                    install_height:'',
+                },()=>{
+                    this.props.form.setFieldsValue({
+                        imei:this.state.imei,
+                        imsi:this.state.imsi,
+                        sensorID:this.state.sensorID,
+                        install_height:this.state.install_height,
+                        addr:this.state.addr,
+                        site:this.state.site,
+                    });
+                })
+            })
+            .catch(error =>{
+                console.log(error.message)
             });
 
 
     };
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields((err) => {
             if (err) {
-                console.log('Received values of form: ', values);
+                console.log('Received values of form: ','some');
             }else{
                 this.handleOk();
             }

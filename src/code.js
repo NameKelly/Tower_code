@@ -112,22 +112,24 @@ class Code extends Component{
                                 <Input  onChange={this.handleHeight} />
                             )}
                         </Form.Item>
-                        <Form.Item label='站点：' {...formItemLayout}>
-                            {getFieldDecorator('site', {
-                                rules: [{
-                                    required: true, message: '请输入传感器站名',
-                                }]
-                            })(
-                                <AutoComplete
+                         {/*<AutoComplete
                                     dataSource={this.state.dataSource}
                                     onSelect={(value)=>this.onSelect(value)}
                                     allowClear={true}
                                     onFocus={this.setData}
                                     style={{ marginBottom: 5 ,width:'100%'}}
                                 >
-                                <Input/>
+                          </AutoComplete>*/}
+                        <Form.Item label='站点：' {...formItemLayout}>
+                            {getFieldDecorator('site', {
+                                rules: [{
+                                    required: true, message: '请输入传感器站名',
+                                }]
+                            })(
 
-                                </AutoComplete>
+                                <Input onChange={(e)=>{this.getValue(e)}}/>
+
+
                             )}
                         </Form.Item>
                         <Form.Item label='地址：' {...formItemLayout}>
@@ -172,8 +174,22 @@ class Code extends Component{
                     console.log(error);
                 });
     };
-
-    onSelect=(value)=>{
+    getValue=(e)=>{
+        const _this=this;
+        let value=e.target.value;
+        let index=this.state.dataSource.indexOf(value);
+        console.log('index',index);
+        this.setState({
+            addr:this.state.addrArr[index],
+            site:value,
+        },()=>{
+            _this.props.form.setFieldsValue({
+                addr:_this.state.addr,
+                site:_this.state.site,
+            });
+        });
+    };
+   /* onSelect=(value)=>{
         const _this=this;
         let index=this.state.dataSource.indexOf(value);
         console.log('index',index);
@@ -187,7 +203,7 @@ class Code extends Component{
         });
 
 
-    };
+    };*/
     handleHeight=(e)=>{
         const _this = this;
         _this.setState({
@@ -199,49 +215,7 @@ class Code extends Component{
             });
         });
     };
-    /*handleSite=(e)=>{
-        const _this = this;
-      _this.setState({
-          site:e.target.value,
-      },()=>{
-          axios.post('http://tower.e-irobot.com:8886/api/select_site', {
-              keyWords:this.state.site
-          })
-              .then(function (response) {
-                  const res=JSON.parse(response.data);
-                  const data=res.data;
-                  let addrValue = data.map(v => v.addr);
-                  let siteValue=data.map(v=>v.site);
 
-                  /!*let head = '(.*)(';
-                  let tail = ')(.*)';
-                  let body = _this.state.site.split('').join(')(.*)(');
-                  let siteAddr= new RegExp(head + body + tail, 'i');  /!*用户输入的值*!/
-                  if(_this.state.site.length>2){
-                      let matchAddr= addrValue.filter(function (item) {
-                          //遍历数组，返回值为true保留并复制到新数组，false则过滤掉
-                          return item.match(siteAddr);
-                      });
-
-                      _this.setState({
-                          addr:matchAddr[0],
-                      },()=>{
-                          console.log('addr',_this.state.addr);
-                          _this.props.form.setFieldsValue({
-                              addr:_this.state.addr,
-                              site:_this.state.site,
-                          });
-                      });
-                  }*!/
-
-
-              })
-              .catch(function (error) {
-                  console.log(error);
-              });
-
-      });
-    };*/
     handleOk=()=>{
 
         axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql',{

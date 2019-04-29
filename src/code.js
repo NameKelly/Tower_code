@@ -15,8 +15,9 @@ class Code extends Component{
             site:'',
             addr:'',
             install_height:'50',
-            dataSource:[],
+            siteArr:[],
             addrArr:[],
+            dataSource:[],
         };
 
     }
@@ -112,24 +113,23 @@ class Code extends Component{
                                 <Input  onChange={this.handleHeight} />
                             )}
                         </Form.Item>
-                         {/*<AutoComplete
-                                    dataSource={this.state.dataSource}
-                                    onSelect={(value)=>this.onSelect(value)}
-                                    allowClear={true}
-                                    onFocus={this.setData}
-                                    style={{ marginBottom: 5 ,width:'100%'}}
-                                >
-                          </AutoComplete>*/}
+
+
                         <Form.Item label='站点：' {...formItemLayout}>
                             {getFieldDecorator('site', {
                                 rules: [{
                                     required: true, message: '请输入传感器站名',
                                 }]
                             })(
+                                <AutoComplete
+                                    dataSource={this.state.dataSource}
+                                    allowClear={true}
+                                    onChange={(value)=>this.getValue(value)}
+                                    style={{ marginBottom: 5 ,width:'100%'}}
+                                >
+                                <Input />
 
-                                <Input onChange={(e)=>{this.getValue(e)}}/>
-
-
+                                </AutoComplete>
                             )}
                         </Form.Item>
                         <Form.Item label='地址：' {...formItemLayout}>
@@ -164,9 +164,9 @@ class Code extends Component{
 
                         _this.setState({
                             addrArr: addrValue,
-                            dataSource: siteValue,
+                            siteArr: siteValue,
                         }, () => {
-                            console.log('StatedataSource', _this.state.dataSource);
+                            console.log('StatedataSource', _this.state.siteArr);
                         });
 
                 })
@@ -174,12 +174,18 @@ class Code extends Component{
                     console.log(error);
                 });
     };
-    getValue=(e)=>{
+    getValue=(value)=>{
         const _this=this;
-        let value=e.target.value;
-        let index=this.state.dataSource.indexOf(value);
+        /*let value=e.target.value;*/
+        let index=_this.state.siteArr.indexOf(value);
         console.log('index',index);
-        this.setState({
+        let dataSource_1= _this.state.siteArr.filter(function (item) {
+            //遍历数组，返回值为true保留并复制到新数组，false则过滤掉
+            let inputValue=new RegExp(`(.*)(${value.split('').join(')(.*)(')})(.*)`, 'i');
+            return item.match(inputValue);
+        });
+        _this.setState({
+            dataSource:dataSource_1,
             addr:this.state.addrArr[index],
             site:value,
         },()=>{
@@ -266,26 +272,6 @@ class Code extends Component{
         });
 
     };
-    /*handleOk2=()=>{
-        const _this=this;
-        axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql',{
-            sensorID:_this.state.sensorID,
-            install_height:_this.state.install_height,
-            site:_this.state.site,
-            Tower_addr:_this.state.addr,
-        }).then(
-            response=>{
 
-                 console.log('site',this.state.site);
-                console.log('sensorID',this.state.sensorID);
-                console.log('Tower_addr',this.state.Tower_addr);
-                console.log('install_height',this.install_height);
-                /!*_this.handleOk();*!/
-            }
-        ).catch(error=>{
-            console.log('error',error.message)
-        })
-};
-*/
 }
 export default Form.create()(Code);

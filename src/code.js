@@ -124,6 +124,7 @@ class Code extends Component{
                                 <AutoComplete
                                     dataSource={this.state.dataSource}
                                     allowClear={true}
+                                    onBlur={this.onBlur}
                                     onChange={(value)=>this.getValue(value)}
                                     style={{ marginBottom: 5 ,width:'100%'}}
                                 >
@@ -150,6 +151,11 @@ class Code extends Component{
             </Fragment>
         );
     }
+    onBlur=()=>{
+        this.setState({
+            dataSource:[],
+        })
+    };
     setData=()=>{
         const _this = this;
             axios.post('http://tower.e-irobot.com:8886/api/select_site', {
@@ -158,7 +164,7 @@ class Code extends Component{
                 .then(function (response) {
 
                         const res = JSON.parse(response.data);
-                        const data = res.data;
+                        const data = Array.from(res.data);
                         let addrValue = data.map(v => v.addr);
                         let siteValue = data.map(v => v.site);
 
@@ -176,14 +182,15 @@ class Code extends Component{
     };
     getValue=(value)=>{
         const _this=this;
-        /*let value=e.target.value;*/
+        let values=value || '';
         let index=_this.state.siteArr.indexOf(value);
         console.log('index',index);
         let dataSource_1= _this.state.siteArr.filter(function (item) {
             //遍历数组，返回值为true保留并复制到新数组，false则过滤掉
-            let inputValue=new RegExp(`(.*)(${value.split('').join(')(.*)(')})(.*)`, 'i');
+            let inputValue=new RegExp(`(.*)(${values.split('').join(')(.*)(')})(.*)`, 'i');
             return item.match(inputValue);
         });
+
         _this.setState({
             dataSource:dataSource_1,
             addr:this.state.addrArr[index],
@@ -193,6 +200,11 @@ class Code extends Component{
                 addr:_this.state.addr,
                 site:_this.state.site,
             });
+            if(value==''){
+                _this.setState({
+                    dataSource:[],
+                })
+            };
         });
     };
    /* onSelect=(value)=>{

@@ -1,5 +1,5 @@
 import React ,{Component,Fragment} from 'react';
-import { Card,Form,Input ,Button ,AutoComplete} from 'antd';
+import { Card,Form,Input ,Button ,AutoComplete,Modal} from 'antd';
 import axios from "axios";
 import 'antd/dist/antd.css';
 
@@ -249,13 +249,54 @@ class Code extends Component{
                 console.log('Tower_addr',this.state.addr);
                 console.log('install_height',this.state.install_height);
 
+                const { getFieldDecorator } = this.props.form;
+                Modal.success({
+                    title:'填写成功',
+                    content:(
+                        <Form>
+                            <Form.Item label='传感器IMEI'>
+                                {getFieldDecorator('imei')(
+                                    <Input disabled/>
+                                )}
+                            </Form.Item>
+                            <Form.Item label='传感器IMSI'>
+                                {getFieldDecorator('imsi')(
+                                    <Input disabled/>
+                                )}
+                            </Form.Item>
+                            <Form.Item label='sensorID'>
+                                {getFieldDecorator('sensorID')(
+                                    <Input disabled/>
+                                )}
+                            </Form.Item>
+                            <Form.Item label='高度'>
+                                {getFieldDecorator('install_height')(
+                                    <Input disabled/>
+                                )}
+                            </Form.Item>
+                            <Form.Item label='站点'>
+                                {getFieldDecorator('site')(
+                                    <Input disabled/>
+                                )}
+                            </Form.Item>
+                            <Form.Item label='地址'>
+                                {getFieldDecorator('addr')(
+                                    <Input disabled/>
+                                )}
+                            </Form.Item>
+                        </Form>
+                    ),
+                    onOk() {window.location.replace(window.location.href);},
+                });
+
+
                 this.setState({
-                    imei:'',
+                    /*imei:'',
                     imsi:'',
                     sensorID:'',
                     site:'',
                     addr:'',
-                    install_height:'',
+                    install_height:'',*/
                 },()=>{
                     this.props.form.setFieldsValue({
                         imei:this.state.imei,
@@ -268,7 +309,10 @@ class Code extends Component{
                 })
             })
             .catch(error =>{
-                console.log(error.message)
+                console.log(error.message);
+                Modal.error({
+                    title:'填写失败',
+                });
             });
 
     };

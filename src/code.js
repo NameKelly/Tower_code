@@ -1,72 +1,40 @@
 import React ,{Component,Fragment} from 'react';
-import { Card,Form,Input ,Button ,AutoComplete,Modal} from 'antd';
+import { Card,Form,Input ,Button ,AutoComplete,Modal,Row,Col,message} from 'antd';
 import axios from "axios";
 import 'antd/dist/antd.css';
 
+let timer;
+const debounce = (func, wait ) => {
+    // let timer = 0;
+    return function(...args) {
+        if (timer) clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            func.apply(this, args);
+        }, wait);
+    };
+};
 
 class Code extends Component{
 
     constructor(props){
         super(props);
         this.state={
-            imei:'',
-            imsi:'',
-            sensorID:'',
-            site:'',
-            addr:'',
-            install_height:'50',
-            siteArr:[],
-            addrArr:[],
+            is_lower:'1',
             dataSource:[],
+            addressSource:[],
+            sensorID:'',
+            company_id:'',
+            site_id:'',
+            site_address:''
         };
 
     }
 
-    componentWillMount() {
-        const _this = this;
-        let myurl = window.location.href;
-
-      /* let myurl = `dhushdusd=1004&hiewdcme`;*/
-
-        console.log(myurl);
-        let second_url = myurl.split("=");
-        let sensor_url2=second_url[1];
-        let second_url3 = sensor_url2.split("&");
-        let senor_id = second_url3[0];
-        console.log(senor_id);
-
-        axios.post('http://tower.e-irobot.com:8886/api/get_identity', {
-            sensorID:senor_id
-        })
-            .then(function (response) {
-                console.log('初始值',JSON.parse(response.data));
-                const res=JSON.parse(response.data);
-                const imeis=res.data[0].imei;
-                const imsis=res.data[0].imsi;
-                console.log(imeis,imsis);
-
-                _this.setState({
-                    imei:imeis,
-                    imsi:imsis,
-                    sensorID:senor_id,
-                },()=>{
-                    _this.props.form.setFieldsValue({
-                        imei:_this.state.imei,
-                        imsi:_this.state.imsi,
-                        sensorID:_this.state.sensorID,
-                        install_height:_this.state.install_height,
-
-                    });
-                })
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-    };
+    componentWillMount() {};
     componentDidMount(){
-            this.setData();
+        this.getData();
+            //this.setData();
     };
 
     render(){
@@ -81,42 +49,22 @@ class Code extends Component{
                     style={{margin:"0 auto",background:"#F5F5F5"}}
                       cover={<div
                           style={{height:"80px",background:"#FF6699",color:"white",textAlign:"center",heightLine:"20px",paddingTop:"50px"}} >
-                          {/*核对传感器信息*/}
+                         {/* 核对传感器信息*/}
                       </div>}>
                 <Card title='传感器设置'  {...formItemLayout}>
+                    <Form.Item label='sensorID：' {...formItemLayout} key={'1'}>
+                        {getFieldDecorator('sensorID')(
+                            <Input disabled/>
+                        )}
+                    </Form.Item>
                     <Form onSubmit={this.handleSubmit}>
-                        <Form.Item label='传感器IMEI：' {...formItemLayout}>
+                        <Form.Item label='IMEI：' {...formItemLayout}>
                             {getFieldDecorator('imei')(
                                 <Input disabled/>
                             )}
                         </Form.Item>
-                        <Form.Item label='传感器IMSI：' {...formItemLayout}>
-                            {getFieldDecorator('imsi',{
-                                rules: [{
-                                    message: '请输入IMSI号',
-                                }],
-                            })(
-                                <Input disabled />
-                            )}
-                        </Form.Item>
-                        <Form.Item label='sensorID：' {...formItemLayout}>
-                            {getFieldDecorator('sensorID')(
-                                <Input disabled/>
-                            )}
-                        </Form.Item>
-                        <Form.Item label='高度：' {...formItemLayout}>
-                            {getFieldDecorator('install_height', {
-                                rules: [{
-                                    required: true, message: '请输入传感器安装高度',
-                                }],
-                            })(
-                                <Input  onChange={this.handleHeight} />
-                            )}
-                        </Form.Item>
-
-
-                        <Form.Item label='站点：' {...formItemLayout}>
-                            {getFieldDecorator('site', {
+                        <Form.Item label='站点名称：' {...formItemLayout} key={'3'}>
+                            {getFieldDecorator('site_name', {
                                 rules: [{
                                     required: true, message: '请输入传感器站名',
                                 }]
@@ -125,25 +73,41 @@ class Code extends Component{
                                     dataSource={this.state.dataSource}
                                     allowClear={true}
                                     onBlur={this.onBlur}
-                                    onChange={(value)=>this.getValue(value)}
+                                    onChange={debounce(this.getValue2)}
+                                    onSelect={debounce(this.onSelect)}
                                     style={{ marginBottom: 5 ,width:'100%'}}
                                 >
-                                <Input />
+                                    <Input />
 
                                 </AutoComplete>
                             )}
                         </Form.Item>
-                        <Form.Item label='地址：' {...formItemLayout}>
-                            {getFieldDecorator('addr')(
+                        <Form.Item label='站点地址：' {...formItemLayout} key={'4'}>
+                            {getFieldDecorator('site_address')(
                                 <Input disabled />
                             )}
                         </Form.Item>
-                        <Form.Item  style={{}} >
-                            <div style={{width:"20%",display:"inline-block"}}/>
+                        <Form.Item label='铁塔类型：' {...formItemLayout} key={'5'}>
+                            {getFieldDecorator('tower_type')(
+                                <Input disabled />
+                            )}
+                        </Form.Item>
+                        <Form.Item label='上塔时间：' {...formItemLayout} key={'6'}>
+                            {getFieldDecorator('lower_date')(
+                                <Input disabled />
+                            )}
+                        </Form.Item>
+                        <Form.Item  style={{}}  key={'7'}>
+                            {/*<div style={{width:"20%",display:"inline-block"}}/>
                             <Button type="primary" htmlType="submit">确定</Button>
                             <div style={{width:"20%",display:"inline-block"}}/>
                             <Button type="primary" >取消</Button>
-                            <div style={{width:"20%",display:"inline-block"}}/>
+                            <div style={{width:"20%",display:"inline-block"}}/>*/}
+                            <Row>
+                                <Col span={'9'}/>
+                                <Col span={'6'}><Button type={'primary'} onClick={this.upOrdown}>{this.state.is_lower=='0'?'下塔':'上塔'}</Button></Col>
+                                <Col span={'9'}/>
+                            </Row>
                         </Form.Item>
                     </Form>
                 </Card>
@@ -151,171 +115,128 @@ class Code extends Component{
             </Fragment>
         );
     }
+    getSensorID=()=>{
+        let myurl = window.location.href;
+        //let myurl=`http://tower.e-irobot.com:8886/codeAddTower.aspx?sensorID=1010&1111111`;
+        console.log(myurl);
+        let second_url = myurl.split("=");
+        let sensor_url2=second_url[1];
+        let second_url3 = sensor_url2.split("&");
+        let senor_id = second_url3[0];
+        console.log(senor_id);
+        return senor_id;
+    };
+    getData=()=>{
+        const _this=this;
+        let sensor_id=this.getSensorID();
+        console.log(sensor_id);
+        axios.get('http://112.33.57.75:2323/api/select_machine_sm', {  //params参数必写 , 如果没有参数传{}也可以
+            params: {
+                sensorID:sensor_id
+            }
+        }).then(function (res) {
+            const data = JSON.parse(res.data);
+            let info=data.data[0];
+            console.log('res',info);
+           _this.setData2(info);
+        }).catch(function (err) {
+            console.log(err);
+        });
+    };
     onBlur=()=>{
         this.setState({
             dataSource:[],
         })
     };
-    setData=()=>{
-        const _this = this;
-            axios.post('http://tower.e-irobot.com:8886/api/select_site', {
-                keyWords:'keyWords'
-            })
-                .then(function (response) {
-
-                        const res = JSON.parse(response.data);
-                        const data = Array.from(res.data);
-                        let addrValue = data.map(v => v.addr);
-                        let siteValue = data.map(v => v.site);
-
-                        _this.setState({
-                            addrArr: addrValue,
-                            siteArr: siteValue,
-                        }, () => {
-                            console.log('StatedataSource', _this.state.siteArr);
-                        });
-
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-    };
-    getValue=(value)=>{
-        const _this=this;
-        let values=value || '';
-        let index=_this.state.siteArr.indexOf(value);
-        console.log('index',index);
-        let dataSource_1= _this.state.siteArr.filter(function (item) {
-            //遍历数组，返回值为true保留并复制到新数组，false则过滤掉
-            let inputValue=new RegExp(`(.*)(${values.split('').join(')(.*)(')})(.*)`, 'i');
-            return item.match(inputValue);
-        });
-
-        _this.setState({
-            dataSource:dataSource_1,
-            addr:this.state.addrArr[index],
-            site:value,
-        },()=>{
-            _this.props.form.setFieldsValue({
-                addr:_this.state.addr,
-                site:_this.state.site,
-            });
-            if(value==''){
-                _this.setState({
-                    dataSource:[],
-                })
-            };
-        });
-    };
-   /* onSelect=(value)=>{
-        const _this=this;
-        let index=this.state.dataSource.indexOf(value);
-        console.log('index',index);
+    setData2=(info)=>{
         this.setState({
-            site:this.state.dataSource[index],
-            addr:this.state.addrArr[index],
+            is_lower:info.is_lower,
+            sensorID:info.sensorID,
+            company_id:info.company_id,
+            site_id:info.site_id,
+            site_address:info.site_address
         },()=>{
-            _this.props.form.setFieldsValue({
-                addr:_this.state.addr,
-            });
-        });
-
-
-    };*/
-    handleHeight=(e)=>{
-        const _this = this;
-        _this.setState({
-            install_height:e.target.value,
-        },()=>{
-            _this.props.form.setFieldsValue({
-                install_height:_this.state.install_height,
-
+            const { getFieldDecorator } = this.props.form;
+            this.props.form.setFieldsValue({
+                sensorID:info.sensorID,
+                imei:info.imei,
+                site_name:info.site_name,
+                site_address:this.state.site_address,
+                tower_type:info.tower_type,
+                lower_date:info.upper_date
             });
         });
     };
+    onSelect=(value)=>{
+        console.log('value',value);
+    };
 
-    handleOk=()=>{
-
-        axios.post('http://tower.e-irobot.com:8886/api/sensor_data_mysql',{
+    getValue2=(value)=>{
+        let _this=this;
+    axios.get('http://112.33.57.75:2323/api/select_site_name', {  //params参数必写 , 如果没有参数传{}也可以
+        params: {
+            site_name:value,
+            company_id:this.state.company_id
+}
+})
+.then(function (res) {
+    let data = JSON.parse(res.data);
+    let dataSource=data.data;
+    console.log('dataSource',dataSource);
+   let nameArr=dataSource.map(item=>item.site_name);
+   let addrArr=dataSource.map(item=>item.site_address);
+   if(dataSource.length=='1'){
+       _this.setState({
+           dataSource:nameArr,
+           addressSource:addrArr,
+           site_id:dataSource[0].site_id
+       },()=>{
+           _this.props.form.setFieldsValue({
+               site_address:_this.state.addressSource[0],
+               tower_type:dataSource[0].tower_type,
+               lower_date:dataSource[0].upper_date
+           });
+       });
+   }else{
+       _this.setState({
+           dataSource:nameArr,
+           addressSource:addrArr
+       });
+   }
+    console.log('arr',_this.state.dataSource,_this.state.addressSource);
+/*    if(_this.state.dataSource.length==1){
+        _this.props.form.setFieldsValue({
+            site_address:_this.state.addressSource[0],
+            tower_type:dataSource[0].tower_type,
+            lower_date:dataSource[0].upper_date
+        });
+    }*/
+    })
+        .catch(function (err) {
+            console.log(err);
+        });
+};
+    upOrdown=()=>{
+        let type=this.state.is_lower=='0'?'下塔':'上塔';
+        axios.post('http://112.33.57.75:2323/api/upper_tower', {
+            type,
+            site_id:this.state.site_id,
             sensorID:this.state.sensorID,
-            install_height:this.state.install_height,
-            site:this.state.site,
-            Tower_addr:this.state.addr,
+            company_id:this.state.company_id
         })
-            .then(response=>{
-                console.log(response);
-                console.log('site',this.state.site);
-                console.log('sensorID',this.state.sensorID);
-                console.log('Tower_addr',this.state.addr);
-                console.log('install_height',this.state.install_height);
-
-                const { getFieldDecorator } = this.props.form;
-                Modal.success({
-                    title:'填写成功',
-                    content:(
-                        <Form>
-                            <Form.Item label='传感器IMEI'>
-                                {getFieldDecorator('imei')(
-                                    <Input disabled/>
-                                )}
-                            </Form.Item>
-                            <Form.Item label='传感器IMSI'>
-                                {getFieldDecorator('imsi')(
-                                    <Input disabled/>
-                                )}
-                            </Form.Item>
-                            <Form.Item label='sensorID'>
-                                {getFieldDecorator('sensorID')(
-                                    <Input disabled/>
-                                )}
-                            </Form.Item>
-                            <Form.Item label='高度'>
-                                {getFieldDecorator('install_height')(
-                                    <Input disabled/>
-                                )}
-                            </Form.Item>
-                            <Form.Item label='站点'>
-                                {getFieldDecorator('site')(
-                                    <Input disabled/>
-                                )}
-                            </Form.Item>
-                            <Form.Item label='地址'>
-                                {getFieldDecorator('addr')(
-                                    <Input disabled/>
-                                )}
-                            </Form.Item>
-                        </Form>
-                    ),
-                    onOk() {window.location.replace(window.location.href);},
-                });
-
-
-                this.setState({
-                    /*imei:'',
-                    imsi:'',
-                    sensorID:'',
-                    site:'',
-                    addr:'',
-                    install_height:'',*/
-                },()=>{
-                    this.props.form.setFieldsValue({
-                        imei:this.state.imei,
-                        imsi:this.state.imsi,
-                        sensorID:this.state.sensorID,
-                        install_height:this.state.install_height,
-                        addr:this.state.addr,
-                        site:this.state.site,
-                    });
-                })
+            .then(function (res) {
+                console.log('res',res);
+                let info=JSON.parse(res.data);
+                message.success(info.msg);
             })
-            .catch(error =>{
-                console.log(error.message);
-                Modal.error({
-                    title:'填写失败',
-                });
+            .catch(function (error) {
+                console.log(error);
             });
-
     };
+    //旧
+   handleOk=()=>{
+
+   };
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err) => {
@@ -323,7 +244,6 @@ class Code extends Component{
                 console.log('Received values of form: ','some');
             }else{
                 this.handleOk();
-                /*this.handleOk();*/
             }
         });
 

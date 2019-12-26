@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="95c5d981-d56a-4dd4-ab8b-1f4bf6145c74" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/code.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todolist.js" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/code.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="1" column="82" selection-start-line="1" selection-start-column="82" selection-end-line="1" selection-end-column="82" />
+              <folding>
+                <element signature="e#1012#4495#0" />
+                <element signature="e#1348#4471#0" />
+                <element signature="e#1410#1631#0" />
+                <element signature="e#1652#4447#0" />
+                <element signature="e#1712#1931#0" />
+                <element signature="e#1956#2829#0" />
+                <element signature="e#2854#3092#0" />
+                <element signature="e#3117#3353#0" />
+                <element signature="e#3378#3614#0" />
+                <element signature="e#3639#4419#0" />
+                <element signature="e#7224#7481#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>dataS</find>
+      <find>handleOk2</find>
+      <find>handleO</find>
+      <find>install_height</find>
+      <find>props.form.</find>
+      <find>this.props.form.</find>
+      <find>senor_id</find>
+      <find>Auto</find>
+      <find>map</find>
+      <find>getFieldDecorator</find>
+      <find>props</find>
+      <find>state</find>
+      <find>handleHeight</find>
+      <find>setData</find>
+      <find>getValue</find>
+      <find>lower_date</find>
+      <find>company_id</find>
+      <find>getValue2</find>
+      <find>onSelect</find>
+      <find>handleOk</find>
+      <find>handleSubmit</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/store/store.js" />
+        <option value="$PROJECT_DIR$/list.json" />
+        <option value="$PROJECT_DIR$/src/store/reducer.js" />
+        <option value="$PROJECT_DIR$/src/url.js" />
+        <option value="$PROJECT_DIR$/src/axios.js" />
+        <option value="$PROJECT_DIR$/src/eg.css" />
+        <option value="$PROJECT_DIR$/src/request.js" />
+        <option value="$PROJECT_DIR$/src/eg.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/store.js" />
+        <option value="$PROJECT_DIR$/src/todolist.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/code.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-3" />
+    <option name="y" value="33" />
+    <option name="width" value="1260" />
+    <option name="height" value="642" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="code_antd" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code_antd" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../tower" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="C:\Users\陈思琪\Desktop\todolist3\node_modules\eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\陈思琪\Desktop\todolist3\node_modules\prettier" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.3.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95c5d981-d56a-4dd4-ab8b-1f4bf6145c74" name="默认的" comment="" />
+      <created>1551700341272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1551700341272</updated>
+      <workItem from="1551700345549" duration="9842000" />
+      <workItem from="1551772515372" duration="2731000" />
+      <workItem from="1554457879726" duration="3189000" />
+      <workItem from="1554908939416" duration="4755000" />
+      <workItem from="1555081611758" duration="10863000" />
+      <workItem from="1555115735421" duration="9002000" />
+      <workItem from="1555145370306" duration="2107000" />
+      <workItem from="1555156761196" duration="8235000" />
+      <workItem from="1555764218921" duration="681000" />
+      <workItem from="1556213186561" duration="2493000" />
+      <workItem from="1556238084779" duration="48997000" />
+      <workItem from="1556302556238" duration="2826000" />
+      <workItem from="1556307000127" duration="4749000" />
+      <workItem from="1556425197436" duration="2813000" />
+      <workItem from="1556509864984" duration="1971000" />
+      <workItem from="1556616192221" duration="6006000" />
+      <workItem from="1556631328855" duration="6272000" />
+      <workItem from="1557202715361" duration="3288000" />
+      <workItem from="1559080178668" duration="89000" />
+      <workItem from="1576895701976" duration="4425000" />
+      <workItem from="1576913826866" duration="7764000" />
+      <workItem from="1577023877410" duration="4277000" />
+      <workItem from="1577065625774" duration="740000" />
+      <workItem from="1577262054490" duration="632000" />
+      <workItem from="1577323234878" duration="4841000" />
+    </task>
+    <task id="LOCAL-00001" summary="first_code提交">
+      <created>1556275360828</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556275360828</updated>
+    </task>
+    <task id="LOCAL-00002" summary="表单提交功能ok">
+      <created>1556284820984</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556284820984</updated>
+    </task>
+    <task id="LOCAL-00003" summary="finish">
+      <created>1556297121858</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556297121858</updated>
+    </task>
+    <task id="LOCAL-00004" summary="finish">
+      <created>1556300794238</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556300794238</updated>
+    </task>
+    <task id="LOCAL-00005" summary="finish3">
+      <created>1556304491450</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1556304491450</updated>
+    </task>
+    <task id="LOCAL-00006" summary="finish4">
+      <created>1556304944289</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1556304944289</updated>
+    </task>
+    <task id="LOCAL-00007" summary="finish5">
+      <created>1556312356013</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1556312356013</updated>
+    </task>
+    <task id="LOCAL-00008" summary="finish站点地址匹配">
+      <created>1556427013229</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1556427013230</updated>
+    </task>
+    <task id="LOCAL-00009" summary="finish站点地址匹配">
+      <created>1556511537204</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1556511537204</updated>
+    </task>
+    <task id="LOCAL-00010" summary="finish站点地址匹配">
+      <created>1556629519688</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1556629519688</updated>
+    </task>
+    <task id="LOCAL-00011" summary="提交弹出提示">
+      <created>1557205946885</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1557205946885</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="153588000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1056394" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="找到" order="7" weight="0.3285968" />
+      <window_info anchor="bottom" id="运行" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23623446" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="调试" order="13" />
+      <window_info anchor="bottom" id="TypeScript" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="first_code提交" />
+    <MESSAGE value="表单提交功能ok" />
+    <MESSAGE value="finish" />
+    <MESSAGE value="finish3" />
+    <MESSAGE value="finish4" />
+    <MESSAGE value="finish5" />
+    <MESSAGE value="finish站点地址匹配" />
+    <MESSAGE value="提交弹出提示" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交弹出提示" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/list.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/antd/lib/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/url.js" />
+    <entry file="file://$PROJECT_DIR$/src/axios.js" />
+    <entry file="file://$PROJECT_DIR$/src/eg.css" />
+    <entry file="file://$PROJECT_DIR$/src/request.js" />
+    <entry file="file://$PROJECT_DIR$/src/eg.js" />
+    <entry file="file://$PROJECT_DIR$/src/store.js" />
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/todolist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/code.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="82" selection-start-line="1" selection-start-column="82" selection-end-line="1" selection-end-column="82" />
+          <folding>
+            <element signature="e#1012#4495#0" />
+            <element signature="e#1348#4471#0" />
+            <element signature="e#1410#1631#0" />
+            <element signature="e#1652#4447#0" />
+            <element signature="e#1712#1931#0" />
+            <element signature="e#1956#2829#0" />
+            <element signature="e#2854#3092#0" />
+            <element signature="e#3117#3353#0" />
+            <element signature="e#3378#3614#0" />
+            <element signature="e#3639#4419#0" />
+            <element signature="e#7224#7481#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

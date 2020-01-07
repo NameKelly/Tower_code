@@ -130,7 +130,7 @@ class Code extends Component{
         const _this=this;
         let sensor_id=this.getSensorID();
         console.log(sensor_id);
-        axios.get('http://112.33.57.75:2323/api/select_machine_sm', {  //params参数必写 , 如果没有参数传{}也可以
+        axios.get('http://112.33.57.75:8886/api/select_machine_sm', {  //params参数必写 , 如果没有参数传{}也可以
             params: {
                 sensorID:sensor_id
             }
@@ -173,7 +173,7 @@ class Code extends Component{
 
     getValue2=(value)=>{
         let _this=this;
-    axios.get('http://112.33.57.75:2323/api/select_site_name', {  //params参数必写 , 如果没有参数传{}也可以
+    axios.get('http://112.33.57.75:8886/api/select_site_name', {  //params参数必写 , 如果没有参数传{}也可以
         params: {
             site_name:value,
             company_id:this.state.company_id
@@ -218,7 +218,7 @@ class Code extends Component{
 };
     upOrdown=()=>{
         let type=this.state.is_lower=='0'?'下塔':'上塔';
-        axios.post('http://112.33.57.75:2323/api/upper_tower', {
+        axios.post('http://112.33.57.75:8886/api/upper_tower', {
             type,
             site_id:this.state.site_id,
             sensorID:this.state.sensorID,

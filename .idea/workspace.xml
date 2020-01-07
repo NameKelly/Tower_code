@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95c5d981-d56a-4dd4-ab8b-1f4bf6145c74" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/code.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/code.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/todolist.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,21 +21,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/code.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="82" selection-start-line="1" selection-start-column="82" selection-end-line="1" selection-end-column="82" />
+            <state relative-caret-position="43">
+              <caret line="220" column="64" selection-start-line="220" selection-start-column="64" selection-end-line="220" selection-end-column="64" />
               <folding>
-                <element signature="e#1012#4495#0" />
-                <element signature="e#1348#4471#0" />
-                <element signature="e#1410#1631#0" />
-                <element signature="e#1652#4447#0" />
-                <element signature="e#1712#1931#0" />
-                <element signature="e#1956#2829#0" />
-                <element signature="e#2854#3092#0" />
-                <element signature="e#3117#3353#0" />
-                <element signature="e#3378#3614#0" />
-                <element signature="e#3639#4419#0" />
-                <element signature="e#7224#7481#0" />
+                <element signature="e#0#48#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -64,6 +64,7 @@
       <find>onSelect</find>
       <find>handleOk</find>
       <find>handleSubmit</find>
+      <find>http</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -85,6 +86,7 @@
         <option value="$PROJECT_DIR$/src/store.js" />
         <option value="$PROJECT_DIR$/src/todolist.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/code.js" />
       </list>
     </option>
@@ -101,7 +103,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -113,6 +114,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -174,6 +176,8 @@
       <workItem from="1577065625774" duration="740000" />
       <workItem from="1577262054490" duration="632000" />
       <workItem from="1577323234878" duration="4841000" />
+      <workItem from="1578368920633" duration="770000" />
+      <workItem from="1578409221069" duration="361000" />
     </task>
     <task id="LOCAL-00001" summary="first_code提交">
       <created>1556275360828</created>
@@ -256,7 +260,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153588000" />
+    <option name="totallyTimeSpent" value="154719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -276,7 +280,7 @@
       <window_info anchor="bottom" id="运行" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23623446" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27175844" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="调试" order="13" />
       <window_info anchor="bottom" id="TypeScript" order="14" />
@@ -301,9 +305,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="提交弹出提示" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/list.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -327,30 +328,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/todolist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/todolist.js" />
+    <entry file="file://$PROJECT_DIR$/src/store/reducer.js" />
+    <entry file="file://$PROJECT_DIR$/src/store/store.js" />
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -361,22 +341,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/code.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="82" selection-start-line="1" selection-start-column="82" selection-end-line="1" selection-end-column="82" />
+        <state relative-caret-position="43">
+          <caret line="220" column="64" selection-start-line="220" selection-start-column="64" selection-end-line="220" selection-end-column="64" />
           <folding>
-            <element signature="e#1012#4495#0" />
-            <element signature="e#1348#4471#0" />
-            <element signature="e#1410#1631#0" />
-            <element signature="e#1652#4447#0" />
-            <element signature="e#1712#1931#0" />
-            <element signature="e#1956#2829#0" />
-            <element signature="e#2854#3092#0" />
-            <element signature="e#3117#3353#0" />
-            <element signature="e#3378#3614#0" />
-            <element signature="e#3639#4419#0" />
-            <element signature="e#7224#7481#0" />
+            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
